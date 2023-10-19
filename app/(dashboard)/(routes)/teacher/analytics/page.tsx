@@ -1,7 +1,7 @@
 export default function page() {
-    return(
+    return (
         <div>
-            Search
+            analytics
         </div>
-    )    
+    )
 };
