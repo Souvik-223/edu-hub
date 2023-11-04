@@ -12,6 +12,7 @@
     "@clerk/nextjs": "^4.25.4",
     "@hookform/resolvers": "^3.3.2",
     "@nextui-org/react": "^2.1.13",
+    "@prisma/client": "^5.5.2",
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-label": "^2.0.2",
     "@radix-ui/react-slot": "^1.0.2",
@@ -31,10 +32,14 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.47.0",
+    "react-hot-toast": "^2.4.1",
     "tailwind-merge": "^1.14.0",
     "tailwindcss": "3.3.3",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "5.2.2",
     "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "prisma": "^5.5.2"
   }
 }
