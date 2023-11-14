@@ -18,13 +18,13 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 
-interface comboboxProps{
-  options:{label:string; value:string}[]
+interface comboboxProps {
+  options: { label: string; value: string }[]
   value?: string
-  onChange:(value:string) => void
+  onChange: (value: string) => void
 }
 
-export function Combobox({options,value,onChange}:comboboxProps) {
+export function Combobox({ options, value, onChange }: comboboxProps) {
   const [open, setOpen] = React.useState(false)
 
   return (
@@ -51,7 +51,7 @@ export function Combobox({options,value,onChange}:comboboxProps) {
               <CommandItem
                 key={option.value}
                 onSelect={(currentValue) => {
-                  onChange(option.value === value? "" : option.value)
+                  onChange(option.value === value ? "" : option.value)
                   setOpen(false)
                 }}
               >

@@ -19,6 +19,13 @@ export default async function CourseIdpage({params}:{params:{courseId:string}}) 
             id:params.courseId
         }
     })
+
+    const categories = await db.category.findMany({
+        orderBy:{
+            name:"asc",
+        },
+    });
+    
     if (!course) {
         return redirect("/")
     }
