@@ -4,7 +4,6 @@ import * as z from "zod";
 import axios from "axios";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-
 import {
     Form,
     FormControl,
@@ -20,6 +19,7 @@ import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Course } from "@prisma/client";
 import { Input } from "@/components/ui/input";
+import formatPrice from "@/lib/format";
 
 
 interface PriceFormProps {
@@ -77,9 +77,11 @@ export function PriceForm({ initialData, courseId }: PriceFormProps) {
                     )}
                 </Button>
             </div>
-            {isEditing && (
+            {!isEditing && (
                 <p className={cn("text-sm mt-2", !initialData.price && "text-slate-500 italic")}>
-                    {initialData.price || "No price"}
+                    {
+                        initialData.price ? formatPrice(initialData.price) : "No price"
+                    }
                 </p>
             )}
             {isEditing && (

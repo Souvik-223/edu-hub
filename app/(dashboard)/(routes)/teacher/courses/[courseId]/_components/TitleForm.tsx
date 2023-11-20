@@ -39,7 +39,7 @@ export function TitleForm({ initialData, courseId }: TitleFormProps) {
 
     const [isEditing, setisEditiing] = useState(false)
     function toggleEdit() {
-        setisEditiing((current)=>!current)
+        setisEditiing((current) => !current)
     }
 
     const form = useForm<z.infer<typeof formSchema>>({
@@ -51,7 +51,7 @@ export function TitleForm({ initialData, courseId }: TitleFormProps) {
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
         try {
-            await axios.patch(`/api/courses/${courseId}`,values);
+            await axios.patch(`/api/courses/${courseId}`, values);
             toast.success("Course updated");
             toggleEdit();
             router.refresh();
@@ -66,11 +66,11 @@ export function TitleForm({ initialData, courseId }: TitleFormProps) {
             <div className="font-medium flex items-center justify-between">
                 Course Title
                 <Button onClick={toggleEdit} variant="ghost">
-                    {isEditing? (
+                    {isEditing ? (
                         <>
                             Cancle
                         </>
-                    ):(
+                    ) : (
                         <>
                             <Pencil className="h-4 w-4 mr-2" />
                             Edit Title
@@ -78,7 +78,7 @@ export function TitleForm({ initialData, courseId }: TitleFormProps) {
                     )}
                 </Button>
             </div>
-            {isEditing && (
+            {!isEditing && (
                 <p className="text-sm mt-2">
                     {initialData.title}
                 </p>
@@ -86,12 +86,12 @@ export function TitleForm({ initialData, courseId }: TitleFormProps) {
             {isEditing && (
                 <Form {...form}>
                     <form
-                    onSubmit={form.handleSubmit(onSubmit)}
-                    className="space-y-4 mt-4">
+                        onSubmit={form.handleSubmit(onSubmit)}
+                        className="space-y-4 mt-4">
                         <FormField
                             control={form.control}
                             name="title"
-                            render={({field})=>(
+                            render={({ field }) => (
                                 <FormItem>
                                     <FormControl>
                                         <Input
@@ -100,7 +100,7 @@ export function TitleForm({ initialData, courseId }: TitleFormProps) {
                                             {...field}
                                         />
                                     </FormControl>
-                                    <FormMessage/>
+                                    <FormMessage />
                                 </FormItem>
                             )}
                         />

@@ -38,7 +38,7 @@ export function DescriptionForm({ initialData, courseId }: DescriptionFormProps)
 
     const [isEditing, setisEditiing] = useState(false)
     function toggleEdit() {
-        setisEditiing((current)=>!current)
+        setisEditiing((current) => !current)
     }
 
     const form = useForm<z.infer<typeof formSchema>>({
@@ -52,7 +52,7 @@ export function DescriptionForm({ initialData, courseId }: DescriptionFormProps)
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
         try {
-            await axios.patch(`/api/courses/${courseId}`,values);
+            await axios.patch(`/api/courses/${courseId}`, values);
             toast.success("Course updated");
             toggleEdit();
             router.refresh();
@@ -67,11 +67,11 @@ export function DescriptionForm({ initialData, courseId }: DescriptionFormProps)
             <div className="font-medium flex items-center justify-between">
                 Course Descriptiton
                 <Button onClick={toggleEdit} variant="ghost">
-                    {isEditing? (
+                    {isEditing ? (
                         <>
                             Cancle
                         </>
-                    ):(
+                    ) : (
                         <>
                             <Pencil className="h-4 w-4 mr-2" />
                             Edit Description
@@ -79,20 +79,20 @@ export function DescriptionForm({ initialData, courseId }: DescriptionFormProps)
                     )}
                 </Button>
             </div>
-            {isEditing && (
-                <p className={cn("text-sm mt-2",!initialData.description && "text-slate-500 italic")}>
+            {!isEditing && (
+                <p className={cn("text-sm mt-2", !initialData.description && "text-slate-500 italic")}>
                     {initialData.description || "No description"}
                 </p>
             )}
             {isEditing && (
                 <Form {...form}>
                     <form
-                    onSubmit={form.handleSubmit(onSubmit)}
-                    className="space-y-4 mt-4">
+                        onSubmit={form.handleSubmit(onSubmit)}
+                        className="space-y-4 mt-4">
                         <FormField
                             control={form.control}
                             name="description"
-                            render={({field})=>(
+                            render={({ field }) => (
                                 <FormItem>
                                     <FormControl>
                                         <Textarea
@@ -101,7 +101,7 @@ export function DescriptionForm({ initialData, courseId }: DescriptionFormProps)
                                             {...field}
                                         />
                                     </FormControl>
-                                    <FormMessage/>
+                                    <FormMessage />
                                 </FormItem>
                             )}
                         />
