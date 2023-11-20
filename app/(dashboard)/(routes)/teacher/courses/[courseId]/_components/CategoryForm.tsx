@@ -81,7 +81,7 @@ export function CategoryForm({ initialData, courseId, options }: CategoryFormPro
                     )}
                 </Button>
             </div>
-            {isEditing && (
+            {!isEditing && (
                 <p className={cn("text-sm mt-2", !initialData.categoryId && "text-slate-500 italic")}>
                     {selectedOption?.label || "No category"}
                 </p>
@@ -100,7 +100,6 @@ export function CategoryForm({ initialData, courseId, options }: CategoryFormPro
                                         <Combobox
                                             options={...options}
                                             {...field}
-
                                         />
                                     </FormControl>
                                     <FormMessage />

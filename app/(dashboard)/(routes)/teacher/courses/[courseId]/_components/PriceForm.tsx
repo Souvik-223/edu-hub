@@ -4,7 +4,6 @@ import * as z from "zod";
 import axios from "axios";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-
 import {
     Form,
     FormControl,
@@ -12,29 +11,27 @@ import {
     FormItem,
     FormMessage
 } from "@/components/ui/form"
-import { input } from "zod";
 import { Pencil } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import { Input } from "@/components/ui/input";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { cn } from "@/lib/utils";
+import { Course } from "@prisma/client";
+import { Input } from "@/components/ui/input";
+import formatPrice from "@/lib/format";
 
 
-interface TitleFormProps {
-    initialData: {
-        title: string;
-    };
+interface PriceFormProps {
+    initialData: Course,
     courseId: string;
 }
 
 const formSchema = z.object({
-    title: z.string().min(1, {
-        message: "Title is required"
-    }),
+    price: z.coerce.number()
 })
 
-export function TitleForm({ initialData, courseId }: TitleFormProps) {
+export function PriceForm({ initialData, courseId }: PriceFormProps) {
     const router = useRouter();
 
     const [isEditing, setisEditiing] = useState(false)
@@ -44,7 +41,9 @@ export function TitleForm({ initialData, courseId }: TitleFormProps) {
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
-        defaultValues: initialData
+        defaultValues: {
+            price: initialData?.price || undefined
+        }
     });
 
     const { isSubmitting, isValid } = form.formState;
@@ -64,7 +63,7 @@ export function TitleForm({ initialData, courseId }: TitleFormProps) {
     return (
         <div className="mt-6 bg-slate-100 rounded-md p-4">
             <div className="font-medium flex items-center justify-between">
-                Course Title
+                Course price
                 <Button onClick={toggleEdit} variant="ghost">
                     {isEditing ? (
                         <>
@@ -73,14 +72,16 @@ export function TitleForm({ initialData, courseId }: TitleFormProps) {
                     ) : (
                         <>
                             <Pencil className="h-4 w-4 mr-2" />
-                            Edit Title
+                            Edit price
                         </>
                     )}
                 </Button>
             </div>
             {!isEditing && (
-                <p className="text-sm mt-2">
-                    {initialData.title}
+                <p className={cn("text-sm mt-2", !initialData.price && "text-slate-500 italic")}>
+                    {
+                        initialData.price ? formatPrice(initialData.price) : "No price"
+                    }
                 </p>
             )}
             {isEditing && (
@@ -90,13 +91,15 @@ export function TitleForm({ initialData, courseId }: TitleFormProps) {
                         className="space-y-4 mt-4">
                         <FormField
                             control={form.control}
-                            name="title"
+                            name="price"
                             render={({ field }) => (
                                 <FormItem>
                                     <FormControl>
                                         <Input
+                                            type="number"
+                                            step="0.01"
                                             disabled={isSubmitting}
-                                            placeholder="e.g Advanced web development"
+                                            placeholder="Set a price for your course"
                                             {...field}
                                         />
                                     </FormControl>
