@@ -8,7 +8,7 @@ import { IconBadge } from "@/components/icon-badge";
 import { Banner } from "@/components/banner";
 
 import { ChapterTitleForm } from "./_components/ChapterTitleForm";
-import { ChapterDescriptionForm } from "./_components/chapterDescriptionForm";
+import { ChapterDescriptionForm } from "./_components/ChapterDescriptionForm";
 import { ChapterAccessForm } from "./_components/ChapterAccessForm";
 import { ChapterVideoForm } from "./_components/ChapterVideoForm";
 import { ChapterActions } from "./_components/ChapterActions";
