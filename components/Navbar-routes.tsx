@@ -8,7 +8,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { isTeacher } from "@/lib/teacher";
 
-import { SearchInput } from "./SearchInput";
+import { SearchInput } from "./search-input";
 
 export const NavbarRoutes = () => {
   const { userId } = useAuth();
@@ -40,8 +40,10 @@ export const NavbarRoutes = () => {
             </Button>
           </Link>
         ) : null}
-        <UserButton afterSignOutUrl="/" />
+        <UserButton
+          afterSignOutUrl="/"
+        />
       </div>
     </>
-  );
-};
+  )
+}
