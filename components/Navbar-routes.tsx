@@ -7,8 +7,7 @@ import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 import { isTeacher } from "@/lib/teacher";
-
-import { SearchInput } from "./search-input";
+import { SearchInput } from "./SearchInput";
 
 export const NavbarRoutes = () => {
   const { userId } = useAuth();
