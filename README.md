@@ -63,8 +63,13 @@ npx prisma db push
 ```
 
 ### Dummy Username and Password
-Username - tester
-Password - tester
+- Username - tester
+- Password - tester
+
+### Dummy Card info for buying course
+- Card Number - 4242 4242 4242 4242
+- Valid - any future date
+- Other data can be Random 
 
 
 ### Start the app
