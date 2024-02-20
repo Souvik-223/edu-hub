@@ -62,6 +62,11 @@ npx prisma db push
 
 ```
 
+### Dummy Username and Password
+Username - tester
+Password - tester
+
+
 ### Start the app
 ```bash
 npm run dev
