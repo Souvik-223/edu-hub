@@ -6,7 +6,7 @@ import { db } from "@/lib/db";
 
 const { Video } = new Mux(
   process.env.MUX_TOKEN_ID!,
-  process.env.MUX_TOKEN_SECRET!
+  process.env.MUX_TOKEN_SECRET!,
 );
 
 export async function DELETE(
@@ -29,9 +29,9 @@ export async function DELETE(
         chapters: {
           include: {
             muxData: true,
-          },
-        },
-      },
+          }
+        }
+      }
     });
 
     if (!course) {
@@ -66,18 +66,18 @@ export async function PATCH(
     const { courseId } = params;
     const values = await req.json();
 
-    if (!userId) {
+    if (!userId) { 
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
     const course = await db.course.update({
       where: {
         id: courseId,
-        userId,
+        userId
       },
       data: {
         ...values,
-      },
+      }
     });
 
     return NextResponse.json(course);

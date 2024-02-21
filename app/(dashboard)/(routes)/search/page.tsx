@@ -1,6 +1,5 @@
 import { auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
-
 import { db } from "@/lib/db";
 import { SearchInput } from "@/components/SearchInput";
 import { getCourses } from "@/actions/getCourses";
