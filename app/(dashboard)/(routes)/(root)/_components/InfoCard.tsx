@@ -1,6 +1,6 @@
 import { LucideIcon } from "lucide-react";
 
-import { IconBadge } from "@/components/icon-badge"
+import { IconBadge } from "@/components/icon-badge";
 
 interface InfoCardProps {
   numberOfItems: number;
@@ -16,19 +16,14 @@ export const InfoCard = ({
   label,
 }: InfoCardProps) => {
   return (
-    <div className="border rounded-md flex items-center gap-x-2 p-3">
-      <IconBadge
-        variant={variant}
-        icon={Icon}
-      />
+    <div className="border dark:border-slate-100 rounded-md flex items-center gap-x-2 p-3">
+      <IconBadge variant={variant} icon={Icon} />
       <div>
-        <p className="font-medium">
-          {label}
-        </p>
-        <p className="text-gray-500 text-sm">
+        <p className="font-medium">{label}</p>
+        <p className="text-gray-500 dark:text-gray-100 text-sm">
           {numberOfItems} {numberOfItems === 1 ? "Course" : "Courses"}
         </p>
       </div>
     </div>
-  )
-}
+  );
+};

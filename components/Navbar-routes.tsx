@@ -8,6 +8,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { isTeacher } from "@/lib/teacher";
 import { SearchInput } from "./SearchInput";
+import { ModeToggle } from "./theme-toggle";
 
 export const NavbarRoutes = () => {
   const { userId } = useAuth();
@@ -25,24 +26,31 @@ export const NavbarRoutes = () => {
         </div>
       )}
       <div className="flex gap-x-2 ml-auto">
+        <ModeToggle />
         {isTeacherPage || isCoursePage ? (
           <Link href="/">
-            <Button size="sm" variant="ghost">
+            <Button
+              size="sm"
+              variant="ghost"
+              className="dark:bg-[#232323] dark:hover:bg-[#343434]"
+            >
               <LogOut className="h-4 w-4 mr-2" />
               Exit
             </Button>
           </Link>
         ) : isTeacher(userId) ? (
           <Link href="/teacher/courses">
-            <Button size="sm" variant="ghost">
+            <Button
+              size="sm"
+              variant="ghost"
+              className="dark:bg-[#232323] dark:hover:bg-[#343434]"
+            >
               Teacher mode
             </Button>
           </Link>
         ) : null}
-        <UserButton
-          afterSignOutUrl="/"
-        />
+        <UserButton afterSignOutUrl="/" />
       </div>
     </>
-  )
-}
+  );
+};
