@@ -97,7 +97,7 @@ export async function PATCH(
   try {
     const { userId } = auth();
     const { isPublished, ...values } = await req.json();
-
+    
     if (!userId) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
@@ -122,14 +122,14 @@ export async function PATCH(
         ...values,
       }
     });
-
+    
     if (values.videoUrl) {
       const existingMuxData = await db.muxData.findFirst({
         where: {
           chapterId: params.chapterId,
         }
       });
-
+      
       if (existingMuxData) {
         await Video.Assets.del(existingMuxData.assetId);
         await db.muxData.delete({
@@ -138,7 +138,7 @@ export async function PATCH(
           }
         });
       }
-
+      
       const asset = await Video.Assets.create({
         input: values.videoUrl,
         playback_policy: "public",

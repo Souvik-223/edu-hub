@@ -55,7 +55,7 @@ export function AttachmentForm({ initialData, courseId }: AttachmentFormProps) {
   }
 
   return (
-    <div className="mt-6 bg-slate-100 rounded-md p-4">
+    <div className="mt-6 bg-slate-100 dark:bg-slate-900 rounded-md p-4">
       <div className="font-medium flex items-center justify-between">
         Course Attachment
         <Button onClick={toggleEdit} variant="ghost">
