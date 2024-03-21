@@ -1,6 +1,6 @@
 # Edu-Hub
 This is a Fullstack Learning management system made to empower free education and community learning. 
-### Technologies used - Next.js 13, React, Tailwind, Typescript, Prisma, PostgreSQL (Neon DB), Mux, Stripe.  
+### Technologies used - Next.js 13, React, Tailwind, Typescript, Prisma, PostgreSQL (Neon DB), Docker, Mux, Stripe.  
 
 ## ⭐ Features
 
